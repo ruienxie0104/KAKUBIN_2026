@@ -1,0 +1,61 @@
+/* Custom animations and phase transitions */
+
+.phase-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease-in-out;
+  display: flex;
+}
+
+.phase-layer.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 10;
+}
+
+/* Base utility overrides */
+.hidden-phase {
+  display: none !important;
+}
+
+/* Sunburst background effect (Thin irregular manga-style speed lines, more visible) */
+.sunburst {
+  background: 
+    repeating-conic-gradient(from 0deg, transparent 0deg 4deg, #ffffff 4deg 4.2deg, transparent 4.2deg 9deg),
+    repeating-conic-gradient(from 13deg, transparent 0deg 6deg, rgba(255,255,255,0.9) 6deg 6.25deg, transparent 6.25deg 14deg),
+    repeating-conic-gradient(from 27deg, transparent 0deg 3deg, #ffffff 3deg 3.15deg, transparent 3.15deg 8deg),
+    repeating-conic-gradient(from 41deg, transparent 0deg 7deg, rgba(255,255,255,0.8) 7deg 7.2deg, transparent 7.2deg 15deg),
+    repeating-conic-gradient(from 55deg, transparent 0deg 5deg, #ffffff 5deg 5.1deg, transparent 5.1deg 11deg);
+  animation: rotate 120s linear infinite;
+  transform-origin: center;
+  scale: 1.5; /* Ensure it covers the whole screen while rotating */
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Form input auto-fill fix */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+    -webkit-text-fill-color: black !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Checkbox custom style (handled mostly by Tailwind, but adding some tweaks if needed) */
+input[type="checkbox"] {
+  border-radius: 0;
+}
