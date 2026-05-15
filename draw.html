@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Suntory KAKUBIN 2026 - 抽卡</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#EBB413',
+            dark: '#1A1A1A',
+            danger: '#D11124'
+          },
+          fontFamily: {
+            serif: ['"Noto Serif TC"', 'serif'],
+            sans: ['"Noto Sans TC"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-900 flex justify-center w-full h-[100dvh] overflow-hidden text-black font-serif transition-opacity duration-500 opacity-0" id="body-main">
+  
+  <main id="app" class="relative w-full max-w-md h-full bg-brand overflow-hidden shadow-2xl mx-auto flex flex-col">
+    
+    <!-- Phase 3: Agreement Form -->
+    <section id="phase-3" class="absolute inset-0 z-10 flex flex-col items-center justify-center p-8 pb-24 bg-brand transition-opacity duration-500">
+      <div class="sunburst absolute inset-0 opacity-20 pointer-events-none"></div>
+      
+      <div class="relative z-10 w-full bg-white/10 backdrop-blur-md p-6 border-2 border-black/10 rounded-xl shadow-lg">
+        <h2 class="text-3xl font-bold text-center mb-8">理性飲酒同意書</h2>
+        
+        <form id="form-agreement" class="flex flex-col gap-6">
+          <div class="flex flex-col gap-2">
+            <label for="name" class="font-bold text-lg">姓名</label>
+            <input type="text" id="name" required class="bg-transparent border-b-2 border-black p-2 text-lg outline-none focus:border-white transition-colors" placeholder="請輸入姓名" />
+          </div>
+          
+          <div class="flex flex-col gap-2">
+            <label for="id-last4" class="font-bold text-lg">身分證後四碼</label>
+            <input type="text" id="id-last4" required pattern="[0-9]{4}" maxlength="4" class="bg-transparent border-b-2 border-black p-2 text-lg outline-none focus:border-white transition-colors tracking-widest" placeholder="例如: 1234" />
+          </div>
+          
+          <div class="flex items-center gap-3 mt-4">
+            <input type="checkbox" id="agree" required class="w-6 h-6 border-2 border-black bg-transparent appearance-none checked:bg-black checked:relative checked:after:content-['✓'] checked:after:absolute checked:after:text-white checked:after:text-sm checked:after:top-0 checked:after:left-1" />
+            <label for="agree" class="font-bold select-none cursor-pointer">確認理性飲酒同意書</label>
+          </div>
+          
+          <button type="submit" class="w-full py-3 mt-4 text-xl font-bold tracking-widest border-2 border-black bg-transparent hover:bg-black hover:text-brand transition-colors">
+            確認送出
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Phase 4: Animation -->
+    <section id="phase-4" class="absolute inset-0 z-20 cursor-pointer flex-col justify-end pb-32 bg-brand hidden transition-opacity duration-500 opacity-0">
+      <video id="vid-shuffle" class="absolute inset-0 w-full h-full object-cover z-0" playsinline muted>
+        <source src="animation/the_hand_shuffling_the_cards_moving_the_cards_around_tdo4naguazhye6k095us_1 2.mp4" type="video/mp4" />
+      </video>
+      
+      <div id="phase-4-overlay" class="relative z-10 w-full px-12 text-center animate-pulse transition-opacity duration-300">
+        <div class="border-t border-black/30 mb-3"></div>
+        <p class="text-xl font-bold tracking-widest">點選任一位置抽風味卡牌</p>
+        <div class="border-t border-black/30 mt-3"></div>
+      </div>
+    </section>
+
+    <!-- Global Image Banner -->
+    <img id="global-banner" src="img/banner.png" alt="禁止酒駕" class="absolute bottom-0 left-0 w-full h-auto z-50 pointer-events-none object-contain bg-black" />
+    
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Suntory KAKUBIN 2026</title>
+  <title>Suntory KAKUBIN 2026 - 首頁</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="style.css" />
   <script>
@@ -11,7 +11,7 @@
       theme: {
         extend: {
           colors: {
-            brand: '#EBB413', // Warm yellow
+            brand: '#EBB413',
             dark: '#1A1A1A',
             danger: '#D11124'
           },
@@ -23,144 +23,27 @@
       }
     }
   </script>
-  <!-- Google Fonts for Traditional Chinese -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-900 flex justify-center w-full h-[100dvh] overflow-hidden text-black font-serif">
+<body class="bg-gray-900 flex justify-center w-full h-[100dvh] overflow-hidden text-black font-serif transition-opacity duration-500 opacity-0" id="body-main">
   
-  <!-- Main App Container -->
   <main id="app" class="relative w-full max-w-md h-full bg-brand overflow-hidden shadow-2xl mx-auto flex flex-col">
     
-    <!-- Phase 2: Home Page (Background Layer) -->
-    <section id="phase-2" class="phase-layer active relative">
+    <!-- Phase 2: Home Page -->
+    <section id="phase-2" class="absolute inset-0 z-0">
       <img src="img/home.png" alt="Home Background" class="absolute inset-0 w-full h-full object-cover object-center z-0" />
-      
-      <!-- Invisible clickable area overlaying the START button in the image -->
-      <button id="btn-start" class="absolute bottom-16 left-0 right-0 h-48 w-full z-10 opacity-0 cursor-pointer" aria-label="Start">
-      </button>
+      <button id="btn-start" class="absolute bottom-16 left-0 right-0 h-48 w-full z-10 opacity-0 cursor-pointer" aria-label="Start"></button>
     </section>
 
-    <!-- Phase 3: Agreement Form -->
-    <section id="phase-3" class="phase-layer hidden flex-col items-center justify-center p-8 pb-24 bg-brand z-10">
-      <!-- Sunburst background effect -->
-      <div class="sunburst absolute inset-0 opacity-20 pointer-events-none"></div>
-      
-      <div class="relative z-10 w-full bg-white/10 backdrop-blur-md p-6 border-2 border-black/10 rounded-xl shadow-lg">
-        <h2 class="text-3xl font-bold text-center mb-8">理性飲酒同意書</h2>
-        
-        <form id="form-agreement" class="flex flex-col gap-6">
-          <div class="flex flex-col gap-2">
-            <label for="name" class="font-bold text-lg">姓名</label>
-            <input type="text" id="name" required class="bg-transparent border-b-2 border-black p-2 text-lg outline-none focus:border-white transition-colors" placeholder="請輸入姓名" />
-          </div>
-          
-          <div class="flex flex-col gap-2">
-            <label for="id-last4" class="font-bold text-lg">身分證後四碼</label>
-            <input type="text" id="id-last4" required pattern="[0-9]{4}" maxlength="4" class="bg-transparent border-b-2 border-black p-2 text-lg outline-none focus:border-white transition-colors tracking-widest" placeholder="例如: 1234" />
-          </div>
-          
-          <div class="flex items-center gap-3 mt-4">
-            <input type="checkbox" id="agree" required class="w-6 h-6 border-2 border-black bg-transparent appearance-none checked:bg-black checked:relative checked:after:content-['✓'] checked:after:absolute checked:after:text-white checked:after:text-sm checked:after:top-0 checked:after:left-1" />
-            <label for="agree" class="font-bold select-none cursor-pointer">確認理性飲酒同意書</label>
-          </div>
-          
-          <button type="submit" class="w-full py-3 mt-4 text-xl font-bold tracking-widest border-2 border-black bg-transparent hover:bg-black hover:text-brand transition-colors">
-            確認送出
-          </button>
-        </form>
-      </div>
-    </section>
-
-    <!-- Phase 4: Animation -->
-    <section id="phase-4" class="phase-layer hidden bg-brand z-20 cursor-pointer flex-col justify-end pb-32">
-      <video id="vid-shuffle" class="absolute inset-0 w-full h-full object-cover z-0" playsinline muted>
-        <source src="animation/the_hand_shuffling_the_cards_moving_the_cards_around_tdo4naguazhye6k095us_1 2.mp4" type="video/mp4" />
-      </video>
-      
-      <!-- Overlay Text -->
-      <div id="phase-4-overlay" class="relative z-10 w-full px-12 text-center animate-pulse transition-opacity duration-300">
-        <div class="border-t border-black/30 mb-3"></div>
-        <p class="text-xl font-bold tracking-widest">點選任一位置抽風味卡牌</p>
-        <div class="border-t border-black/30 mt-3"></div>
-      </div>
-    </section>
-
-    <!-- Phase 5 & 6: Result -->
-    <section id="phase-5" class="phase-layer hidden flex-col items-center justify-start p-6 pb-32 bg-brand z-10 pt-12 overflow-y-auto overflow-x-hidden w-full">
-      <div class="sunburst absolute inset-0 opacity-20 pointer-events-none"></div>
-      
-      <!-- Top Logo Area (Placeholder for actual logo if it was separate, otherwise we just show text/card) -->
-      <div class="relative z-10 w-full flex flex-col items-center gap-6">
-        
-        <!-- Hanafuda Card with Stepped Backdrop Layers -->
-        <div class="relative flex items-center justify-center w-full my-6 transition-transform transform hover:scale-105 duration-500">
-          
-          <!-- Back Layer (Widest, Shortest, with Pattern) -->
-          <div class="absolute w-80 h-64 bg-[#4b4220] rounded-xl z-0 overflow-hidden shadow-lg border-2 border-black/30">
-            <!-- Simple pattern overlay -->
-            <div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(transparent 8px, #000 8px, #000 9px, transparent 9px); background-size: 20px 20px; background-position: -10px -10px;"></div>
-          </div>
-          
-          <!-- Middle Layer (Medium width, Medium height, Solid dark) -->
-          <div class="absolute w-72 h-80 bg-[#2d2712] rounded-xl z-10 shadow-lg border-2 border-black/50"></div>
-          
-          <!-- Front Layer (The Card itself, Tallest, Thick Black Border) -->
-          <div class="relative w-64 h-[26rem] z-20 shadow-2xl rounded-2xl overflow-hidden bg-[#EFE3C6] border-8 border-black">
-            <img id="result-card" src="img/花札牌-01.png" alt="Hanafuda Card" class="absolute inset-0 w-full h-full object-cover" />
-          </div>
-          
-        </div>
-        
-        <!-- Result Text -->
-        <div class="w-full flex items-center justify-center mt-4">
-          <div class="w-16 h-[1px] bg-black"></div>
-          <h3 id="result-text" class="text-xl font-bold mx-4 whitespace-nowrap">恭喜獲得 鳳梨 Highball 一杯</h3>
-          <div class="w-16 h-[1px] bg-black"></div>
-        </div>
-        
-        <!-- QR Code Area -->
-        <div class="relative mt-2">
-          <div class="p-2 bg-white border-2 border-black inline-block">
-            <img src="img/qrcode_placeholder.png" alt="Redeem QR Code" class="w-32 h-32 object-contain" />
-          </div>
-          
-          <!-- Phase 6 Stamp -->
-          <div id="stamp-redeemed" class="absolute inset-0 flex items-center justify-center opacity-0 scale-150 pointer-events-none transition-all duration-500 ease-out z-20">
-            <div class="border-4 border-black bg-black text-white px-4 py-1 -rotate-12 font-bold text-2xl tracking-widest shadow-xl">
-              已兌換
-            </div>
-          </div>
-        </div>
-        
-        <!-- Rules List -->
-        <ul class="text-xs space-y-2 mt-4 px-4 list-disc text-left w-full max-w-sm">
-          <li>請憑QR code於當日角瓶美味祭活動現場兌換，逾時視同放棄</li>
-          <li>兌換前請先向工作人員出示已關注官方角瓶IG</li>
-          <li>本卡牌僅限兌換一次，一天一人限一杯</li>
-          <li>不得轉售、兌換現金或兌換其他贈品</li>
-          <li>更多活動詳情請查詢官方角瓶IG</li>
-          <li>最終解釋權以台灣三得利(股)公司所有</li>
-        </ul>
-        
-        <!-- Simulate Button (Hidden initially, used for triggering Phase 6) -->
-        <button id="btn-simulate" class="mt-2 px-4 py-2 border border-black/30 text-xs text-black/50 hover:bg-black/10 rounded">
-          Simulate Redemption (Staff)
-        </button>
-        
-      </div>
-    </section>
-
-    <!-- Phase 1: Age Gate (Overlay on top of everything initially) -->
-    <section id="phase-1" class="absolute inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-black/40">
+    <!-- Phase 1: Age Gate (Overlay) -->
+    <section id="phase-1" class="absolute inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-black/40 transition-opacity duration-500">
       <div class="bg-brand border-2 border-black/10 w-11/12 max-w-sm p-8 shadow-2xl relative overflow-hidden">
-        <!-- Texture overlay -->
         <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: url('data:image/svg+xml,%3Csvg width=\'20\' height=\'20\' viewBox=\'0 0 20 20\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%23000000\' fill-opacity=\'1\' fill-rule=\'evenodd\'%3E%3Ccircle cx=\'3\' cy=\'3\' r=\'3\'/%3E%3Ccircle cx=\'13\' cy=\'13\' r=\'3\'/%3E%3C/g%3E%3C/svg%3E'); background-size: 4px 4px;"></div>
         
         <div class="relative z-10 text-center flex flex-col items-center">
           <h2 class="text-2xl font-bold mb-6 tracking-widest border-b border-black/30 pb-4 w-full">是否年滿18歲</h2>
-          
           <div class="flex gap-12 mt-2">
             <button id="btn-age-yes" class="text-2xl font-bold text-danger hover:scale-110 transition-transform">是</button>
             <button id="btn-age-no" class="text-2xl font-bold hover:scale-110 transition-transform">否</button>
@@ -168,9 +51,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Global Image Banner (Hidden on Phase 1 & 2) -->
-    <img id="global-banner" src="img/banner.png" alt="禁止酒駕" class="absolute bottom-0 left-0 w-full h-auto z-50 pointer-events-none hidden transition-opacity duration-300 object-contain bg-black" />
     
   </main>
 
