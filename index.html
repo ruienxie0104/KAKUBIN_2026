@@ -94,12 +94,23 @@
       <!-- Top Logo Area (Placeholder for actual logo if it was separate, otherwise we just show text/card) -->
       <div class="relative z-10 w-full flex flex-col items-center gap-6">
         
-        <!-- Hanafuda Card -->
-        <div class="relative w-64 h-96 shadow-2xl transition-transform transform hover:scale-105 duration-500">
-          <!-- Multi-layer backing for the card to look like the design -->
-          <div class="absolute inset-0 bg-[#4D452B] translate-x-4 translate-y-4 rounded-lg"></div>
-          <div class="absolute inset-0 bg-[#282415] translate-x-2 translate-y-2 rounded-lg"></div>
-          <img id="result-card" src="img/花札牌-01.png" alt="Hanafuda Card" class="absolute inset-0 w-full h-full object-cover border-4 border-black rounded-lg bg-[#EFE3C6]" />
+        <!-- Hanafuda Card with Stepped Backdrop Layers -->
+        <div class="relative flex items-center justify-center w-full my-6 transition-transform transform hover:scale-105 duration-500">
+          
+          <!-- Back Layer (Widest, Shortest, with Pattern) -->
+          <div class="absolute w-80 h-64 bg-[#4b4220] rounded-xl z-0 overflow-hidden shadow-lg border-2 border-black/30">
+            <!-- Simple pattern overlay -->
+            <div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(transparent 8px, #000 8px, #000 9px, transparent 9px); background-size: 20px 20px; background-position: -10px -10px;"></div>
+          </div>
+          
+          <!-- Middle Layer (Medium width, Medium height, Solid dark) -->
+          <div class="absolute w-72 h-80 bg-[#2d2712] rounded-xl z-10 shadow-lg border-2 border-black/50"></div>
+          
+          <!-- Front Layer (The Card itself, Tallest, Thick Black Border) -->
+          <div class="relative w-64 h-[26rem] z-20 shadow-2xl rounded-2xl overflow-hidden bg-[#EFE3C6] border-8 border-black">
+            <img id="result-card" src="img/花札牌-01.png" alt="Hanafuda Card" class="absolute inset-0 w-full h-full object-cover" />
+          </div>
+          
         </div>
         
         <!-- Result Text -->
