@@ -62,6 +62,51 @@ document.addEventListener('DOMContentLoaded', () => {
   const phase4 = document.getElementById('phase-4');
   const formAgreement = document.getElementById('form-agreement');
   const vidShuffle = document.getElementById('vid-shuffle');
+  const agreeCheckbox = document.getElementById('agree');
+  
+  // Policy Modal Elements
+  const btnOpenPolicy = document.getElementById('btn-open-policy');
+  const policyModal = document.getElementById('policy-modal');
+  const btnClosePolicy = document.getElementById('btn-close-policy');
+  const modalPrivacyConsent = document.getElementById('modal-privacy-consent');
+
+  // Modal Open/Close Logic
+  if (btnOpenPolicy && policyModal) {
+    btnOpenPolicy.addEventListener('click', () => {
+      policyModal.classList.remove('hidden');
+      setTimeout(() => {
+        policyModal.classList.remove('opacity-0', 'pointer-events-none');
+      }, 10);
+    });
+  }
+
+  function closePolicyModal() {
+    if (policyModal) {
+      policyModal.classList.add('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        policyModal.classList.add('hidden');
+      }, 300);
+    }
+  }
+
+  if (btnClosePolicy) {
+    btnClosePolicy.addEventListener('click', closePolicyModal);
+  }
+
+  // Sync Checkboxes
+  if (modalPrivacyConsent && agreeCheckbox) {
+    modalPrivacyConsent.addEventListener('change', function() {
+      agreeCheckbox.checked = this.checked;
+      if (this.checked) {
+        // Close modal automatically if they checked it inside the modal
+        setTimeout(closePolicyModal, 300);
+      }
+    });
+
+    agreeCheckbox.addEventListener('change', function() {
+      modalPrivacyConsent.checked = this.checked;
+    });
+  }
 
   if (formAgreement) {
     formAgreement.addEventListener('submit', (e) => {
