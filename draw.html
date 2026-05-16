@@ -31,11 +31,17 @@
   
   <main id="app" class="relative w-full max-w-md h-full bg-brand overflow-hidden shadow-2xl mx-auto flex flex-col">
     
-    <!-- Phase 3: Agreement Form -->
+    <!-- Top Corner Logos (Global to this page) -->
+    <div class="absolute top-6 left-6 right-6 flex justify-between items-start z-[100] pointer-events-none">
+      <img src="img/icon1.png" alt="Suntory Logo" class="w-16 h-auto object-contain drop-shadow-md" />
+      <img src="img/icon2.png" alt="Campaign Logo" class="w-24 h-auto object-contain drop-shadow-md" />
+    </div>
+
     <section id="phase-3" class="absolute inset-0 z-10 flex flex-col items-center justify-center p-8 pb-24 bg-brand transition-opacity duration-500">
       <div class="sunburst absolute inset-0 opacity-20 pointer-events-none"></div>
       
-      <div class="relative z-10 w-full bg-white/10 backdrop-blur-md p-6 border-2 border-black/10 rounded-xl shadow-lg">
+      <!-- Added mt-24 to push form down away from icons -->
+      <div class="relative z-10 w-full bg-white/10 backdrop-blur-md p-6 border-2 border-black/10 rounded-xl shadow-lg mt-24">
         <h2 class="text-3xl font-bold text-center mb-8">理性飲酒同意書</h2>
         
         <form id="form-agreement" class="flex flex-col gap-6">
