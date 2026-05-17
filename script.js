@@ -79,7 +79,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 50);
         
         // Reset video and overlay state
-        vidShuffle.currentTime = 0;
+        vidShuffle.load();
+        vidShuffle.currentTime = 0.1;
         const overlay = document.getElementById('phase-4-overlay');
         overlay.style.display = ''; 
         overlay.style.opacity = '1';
